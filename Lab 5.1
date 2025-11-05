@@ -1,0 +1,31 @@
+#include "pch.h"
+using namespace System;
+
+int main(array<String^>^ args)
+{
+    Console::OutputEncoding = System::Text::Encoding::UTF8;
+
+    const double T = 1800.0; 
+    array<double>^ stresses = { 100, 120, 150, 170, 200, 250 }; 
+    int n = stresses->Length;
+
+    array<double>^ diameters = gcnew array<double>(n);
+
+    Console::WriteLine(L"Таблиця результатів:");
+    Console::WriteLine(L"------------------------------------------");
+    Console::WriteLine(L"|   t (кгс/см²)  |  d (см)               |");
+    Console::WriteLine(L"------------------------------------------");
+
+    for (int i = 0; i < n; i++)
+    {
+
+        double d = Math::Pow((16 * T) / (Math::PI * stresses[i]), 1.0 / 3.0);
+        diameters[i] = d;
+
+        Console::WriteLine(L"|  {0,8:F0}      |  {1,10:F3} см         |", stresses[i], d);
+    }
+
+    Console::WriteLine(L"------------------------------------------");
+    Console::ReadKey();
+    return 0;
+}
