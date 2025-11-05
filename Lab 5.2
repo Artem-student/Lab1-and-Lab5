@@ -1,0 +1,69 @@
+#include "pch.h"
+using namespace System;
+
+int main(array<String^>^ args)
+{
+    Console::OutputEncoding = System::Text::Encoding::UTF8;
+
+    int rows, cols;
+
+    Console::Write(L"Введіть кількість рядків: ");
+    rows = Int32::Parse(Console::ReadLine());
+
+    Console::Write(L"Введіть кількість стовпців: ");
+    cols = Int32::Parse(Console::ReadLine());
+
+    Random^ rnd = gcnew Random();
+
+    array<array<int>^>^ matrix = gcnew array<array<int>^>(rows);
+    for (int i = 0; i < rows; i++)
+        matrix[i] = gcnew array<int>(cols);
+
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < cols; j++)
+            matrix[i][j] = rnd->Next(0, 100);
+
+    Console::WriteLine(L"\nПочаткова матриця:");
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < cols; j++)
+            Console::Write("{0,4}", matrix[i][j]);
+        Console::WriteLine();
+    }
+
+    int minValue = matrix[0][0];
+    int minRow = 0, minCol = 0;
+
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            if (matrix[i][j] < minValue)
+            {
+                minValue = matrix[i][j];
+                minRow = i;
+                minCol = j;
+            }
+        }
+    }
+
+    Console::WriteLine(L"\nМінімальний елемент: {0} (рядок {1}, стовпець {2})",
+        minValue, minRow, minCol);
+
+    for (int j = 0; j < cols; j++)
+        matrix[minRow][j] = 0; 
+
+    for (int i = 0; i < rows; i++)
+        matrix[i][minCol] = 0; 
+
+    Console::WriteLine(L"\nМатриця після перетворення:");
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < cols; j++)
+            Console::Write("{0,4}", matrix[i][j]);
+        Console::WriteLine();
+    }
+
+    Console::ReadKey();
+    return 0;
+}
