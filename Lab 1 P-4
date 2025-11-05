@@ -22,3 +22,5 @@ int main(array<System::String^>^ args)
     Console::WriteLine("Рядок навпаки: {0}", revers);
     return 0;
 }
+
+
