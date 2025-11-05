@@ -1,0 +1,23 @@
+#include "pch.h"
+#include "Windows.h"
+
+using namespace System;
+
+int main(array<System::String^>^ args)
+{
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+
+    Console::WriteLine("Введіть рядок1: ");
+    String^ text1 (Console::ReadLine());
+
+    Console::WriteLine("Введіть рядок2: ");
+    String^ text2(Console::ReadLine());
+
+    String^ text3(text1 + " " + text2);
+
+    Console::WriteLine(L"Рядок перший: {0}", text1);
+    Console::WriteLine(L"Рядок другий: {0}", text2);
+    Console::WriteLine(L"Рядок об'еднаний: {0}", text3);
+    return 0;
+}
