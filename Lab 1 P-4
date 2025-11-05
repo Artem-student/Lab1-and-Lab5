@@ -1,0 +1,24 @@
+#include "pch.h"
+#include "Windows.h"
+
+using namespace System;
+
+int main(array<System::String^>^ args)
+{
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+
+    Console::WriteLine(L"Введіть рядок:");
+    String^ text = Console::ReadLine();
+    
+    String^ revers("");
+
+    for (int i(text->Length - 1); i >= 0; i--)
+    {
+        revers += text[i];
+    }
+
+    Console::WriteLine("Рядок оригінал: {0}", text);
+    Console::WriteLine("Рядок навпаки: {0}", revers);
+    return 0;
+}
