@@ -1,0 +1,30 @@
+#include "pch.h"
+#include "Windows.h"
+
+using namespace System;
+
+int main(array<System::String^>^ args)
+{
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+
+    Console::WriteLine("Введіть рядок1: ");
+    String^ text1(Console::ReadLine());
+
+    Console::WriteLine("Введіть рядок2: ");
+    String^ text2(Console::ReadLine());
+
+    int len1(text1->Length);
+    int len2(text2->Length);
+
+    int result(len1 - len2);
+
+    if (result < 0)
+        Console::WriteLine(L"Другий рядок довше ніж перший рядок.");
+    else if (result > 0)
+        Console::WriteLine(L"Перший рядок довше ніж другий рядок.");
+    else
+        Console::WriteLine(L"Рядки однакові по довжині.");
+
+    return 0;
+}
