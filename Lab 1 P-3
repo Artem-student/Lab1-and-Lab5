@@ -1,0 +1,27 @@
+#include "pch.h"
+#include "Windows.h"
+
+using namespace System;
+
+int main(array<System::String^>^ args)
+{
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+
+    Console::WriteLine("Введіть рядок1: ");
+    String^ text1(Console::ReadLine());
+
+    Console::WriteLine("Введіть рядок2: ");
+    String^ text2(Console::ReadLine());
+
+    int result(String::Compare(text1, text2));
+
+    if (result < 0)
+        Console::WriteLine(L"{0} менше ніж {1}.", text1, text2);
+    else if (result > 0)
+        Console::WriteLine(L"{0} більше ніж {1}.", text1, text2);
+    else
+        Console::WriteLine(L"{0} еквівалентно {1}.", text1, text2);
+
+    return 0;
+}
